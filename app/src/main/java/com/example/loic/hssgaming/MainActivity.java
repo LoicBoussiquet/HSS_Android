@@ -1,9 +1,15 @@
 package com.example.loic.hssgaming;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+
+import java.net.URI;
+import java.net.URL;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -35,5 +41,14 @@ public class MainActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void AccederStream (View v)
+    {
+        String urlstream = "http://www.twitch.tv/hss_gaming";
+        Intent nav = new Intent();
+        nav.setAction(Intent.ACTION_VIEW);
+        nav.setData(Uri.parse(urlstream));
+        startActivity(nav);
     }
 }

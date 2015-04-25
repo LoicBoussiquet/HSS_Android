@@ -9,23 +9,18 @@
         android:layout_height="wrap_content"
         android:id="@+id/textView" />
 
-    <ImageView
-        android:layout_width="match_parent"
+    <TextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/imgPirah"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="PIRAH"
+        android:id="@+id/txtView_test"
         android:layout_below="@+id/textView"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="20dp"
-        android:src="@mipmap/Pirah" />
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/imageView"
-        android:layout_below="@+id/imgPirah"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="20dp"
-        android:baselineAlignBottom="false"
-        android:src="@mipmap/Pirah" />
+        android:layout_marginTop="48dp"
+        android:background="@color/button_material_light"
+        android:enabled="true"
+        android:onClick="AccederStream"
+        android:clickable="true" />
 
 </RelativeLayout>
