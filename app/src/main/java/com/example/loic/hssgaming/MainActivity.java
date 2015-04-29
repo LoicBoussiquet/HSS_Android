@@ -88,7 +88,7 @@ public class MainActivity extends ActionBarActivity {
 
             json = new JSONObject();
 
-            json = jParser.makeHttpRequest(urlTwitch + "hssgaming", MethodGET, parametres);
+            json = jParser.makeHttpRequest(urlTwitch + "ogaminglol", MethodGET, parametres);
 
             return null;
         }
@@ -108,7 +108,7 @@ public class MainActivity extends ActionBarActivity {
                 else
                 {
                     txtViewTitle1.setText(json.getJSONObject("stream").getJSONObject("channel").getString("name"));
-                    txtViewViewvers.setText("Viewers" + json.getJSONObject("stream").getString("viewers"));
+                    txtViewViewvers.setText("Viewers : " + json.getJSONObject("stream").getString("viewers"));
                     chkBoxOnline.setChecked(true);
                 }
             } catch (JSONException e) {
