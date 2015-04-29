@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/HSSGaming.iml" filepath="$PROJECT_DIR$/HSSGaming.iml" />
+      <module fileurl="file://$PROJECT_DIR$/HSS_Android.iml" filepath="$PROJECT_DIR$/HSS_Android.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

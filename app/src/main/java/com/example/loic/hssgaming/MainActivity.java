@@ -2,6 +2,7 @@ package com.example.loic.hssgaming;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -13,6 +14,8 @@ import java.net.URL;
 
 
 public class MainActivity extends ActionBarActivity {
+
+    Intent nav;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,10 +48,15 @@ public class MainActivity extends ActionBarActivity {
 
     public void AccederStream (View v)
     {
-        String urlstream = "http://www.twitch.tv/hss_gaming";
-        Intent nav = new Intent();
         nav.setAction(Intent.ACTION_VIEW);
-        nav.setData(Uri.parse(urlstream));
         startActivity(nav);
+    }
+
+    class ChargementListeStreamers extends AsyncTask<String,String,String>
+    {
+        @Override
+        protected String doInBackground(String... params) {
+            return null;
+        }
     }
 }
