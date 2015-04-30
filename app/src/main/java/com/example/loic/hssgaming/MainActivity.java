@@ -2,49 +2,40 @@ package com.example.loic.hssgaming;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.net.Uri;
-import android.os.AsyncTask;
-import android.support.v7.app.ActionBarActivity;
+
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.CheckBox;
-import android.widget.TextView;
-
-import org.apache.http.NameValuePair;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.net.URI;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 
-public class MainActivity extends ActionBarActivity {
 
-    Intent nav;
-    JSONObject json;
-    String urlTwitch = "https://api.twitch.tv/kraken/streams/";
-    String MethodGET = "GET";
-    String MethodPOST = "POST";
+public class MainActivity extends Activity {
 
-    TextView txtViewTitle1;
-    TextView txtViewViewvers;
-    CheckBox chkBoxOnline;
+    ListView lstStreamers;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        txtViewTitle1 = (TextView) findViewById(R.id.txtViewTitle1);
-        txtViewViewvers = (TextView) findViewById(R.id.txtViewViewers);
-        chkBoxOnline = (CheckBox) findViewById(R.id.chkBoxOnline1);
+        lstStreamers = (ListView) findViewById(R.id.lstViewStreamers);
+        lstStreamers.setAdapter(new ArrayAdapter<>(MainActivity.this, android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.dataelements)));
 
-        new ChargementListeStreamers().execute();
+        lstStreamers.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
+                //Intent in = new Intent(MainActivity.this, ActivityStream.class);
+                Intent in = new Intent(MainActivity.this, ActivityStream.class);
+                String streamer = parent.getItemAtPosition(position).toString();
+                in.putExtra("streamer", streamer);
+                startActivity(in);
+            }
+        });
     }
 
 
@@ -66,55 +57,8 @@ public class MainActivity extends ActionBarActivity {
         if (id == R.id.action_settings) {
             return true;
         }
-
+        
         return super.onOptionsItemSelected(item);
     }
 
-    public void AccederStream (View v)
-    {
-        nav.setAction(Intent.ACTION_VIEW);
-        startActivity(nav);
-    }
-
-    class ChargementListeStreamers extends AsyncTask<String,String,String>
-    {
-
-        @Override
-        protected String doInBackground(String... params) {
-
-            List<NameValuePair> parametres = new ArrayList<>();
-
-            JSONParser jParser = new JSONParser();
-
-            json = new JSONObject();
-
-            json = jParser.makeHttpRequest(urlTwitch + "ogaminglol", MethodGET, parametres);
-
-            return null;
-        }
-
-
-
-        @Override
-        protected void onPostExecute(String s) {
-
-            try {
-                if (json.getString("stream").equals("null"))
-                {
-                    txtViewTitle1.setText("Offline");
-                    txtViewViewvers.setText("");
-                    chkBoxOnline.setChecked(false);
-                }
-                else
-                {
-                    txtViewTitle1.setText(json.getJSONObject("stream").getJSONObject("channel").getString("name"));
-                    txtViewViewvers.setText("Viewers : " + json.getJSONObject("stream").getString("viewers"));
-                    chkBoxOnline.setChecked(true);
-                }
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-            super.onPostExecute(s);
-        }
-    }
 }

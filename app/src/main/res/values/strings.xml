@@ -3,5 +3,8 @@
     <string name="liste_streamers">Liste des streamers</string>
 
     <string name="action_settings">Settings</string>
-    <string name="Online">Online</string>
+    <string name="online">Online</string>
+    <string name="title_activity_activity_stream"></string>
+
+    <string name="stream_de">Stream de </string>
 </resources>
