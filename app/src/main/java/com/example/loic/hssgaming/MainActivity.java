@@ -2,7 +2,6 @@ package com.example.loic.hssgaming;
 
 import android.app.Activity;
 import android.content.Intent;
-
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -16,11 +15,16 @@ import android.widget.ListView;
 public class MainActivity extends Activity {
 
     ListView lstStreamers;
+    Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        intent = new Intent(MainActivity.this, StreamNotificationService.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startService(intent);
 
         lstStreamers = (ListView) findViewById(R.id.lstViewStreamers);
         lstStreamers.setAdapter(new ArrayAdapter<>(MainActivity.this, android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.streamers)));
@@ -37,7 +41,6 @@ public class MainActivity extends Activity {
             }
         });
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
