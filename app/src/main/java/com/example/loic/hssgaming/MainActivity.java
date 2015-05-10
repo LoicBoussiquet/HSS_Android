@@ -23,7 +23,7 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         lstStreamers = (ListView) findViewById(R.id.lstViewStreamers);
-        lstStreamers.setAdapter(new ArrayAdapter<>(MainActivity.this, android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.dataelements)));
+        lstStreamers.setAdapter(new ArrayAdapter<>(MainActivity.this, android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.streamers)));
 
         lstStreamers.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
