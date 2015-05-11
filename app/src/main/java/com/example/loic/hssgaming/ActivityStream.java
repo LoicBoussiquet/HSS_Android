@@ -2,8 +2,8 @@ package com.example.loic.hssgaming;
 
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.CheckBox;
@@ -22,6 +22,7 @@ public class ActivityStream extends ActionBarActivity {
     TextView txtViewTitle;
     TextView txtViewViewers;
     CheckBox chkBoxOnline;
+    TextView txtViewGame;
 
     JSONObject json;
     String urlTwitch = "https://api.twitch.tv/kraken/streams/";
@@ -37,6 +38,7 @@ public class ActivityStream extends ActionBarActivity {
         txtViewTitle = (TextView) findViewById(R.id.txtViewTitle);
         txtViewViewers = (TextView) findViewById(R.id.txtViewViewers);
         chkBoxOnline = (CheckBox) findViewById(R.id.chkBoxOnline);
+        txtViewGame = (TextView) findViewById(R.id.txtViewGame);
 
 
         String Streamer;
@@ -101,12 +103,14 @@ public class ActivityStream extends ActionBarActivity {
                 {
                     txtViewTitle.setText("Offline");
                     txtViewViewers.setText("");
+                    txtViewGame.setText("");
                     chkBoxOnline.setChecked(false);
                 }
                 else
                 {
                     txtViewTitle.setText(json.getJSONObject("stream").getJSONObject("channel").getString("name"));
                     txtViewViewers.setText("Viewers : " + json.getJSONObject("stream").getString("viewers"));
+                    txtViewGame.setText(json.getJSONObject("stream").getString("game"));
                     chkBoxOnline.setChecked(true);
                 }
             } catch (JSONException e) {
