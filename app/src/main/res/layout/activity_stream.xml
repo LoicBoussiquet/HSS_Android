@@ -1,47 +1,58 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="com.example.loic.hssgaming.ActivityStream">
 
     <TextView
+        android:id="@+id/txtViewTitleActitvity"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/txtViewTitleActitvity" />
+        android:layout_height="wrap_content" />
 
     <TextView
+        android:id="@+id/txtViewTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/txtViewTitle"
         android:layout_alignParentStart="true"
         android:layout_marginTop="40dp"
         android:background="#ffd2cfd3"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-        android:paddingLeft="5dp" />
+        android:paddingLeft="5dp"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
 
     <CheckBox
-        android:clickable="false"
+        android:id="@+id/chkBoxOnline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/online"
-        android:id="@+id/chkBoxOnline"
-        android:layout_below="@+id/txtViewTitle"
         android:layout_alignParentStart="true"
-        android:background="#ffd2cfd3" />
+        android:layout_below="@+id/txtViewTitle"
+        android:background="#ffd2cfd3"
+        android:clickable="false"
+        android:text="@string/online" />
 
     <TextView
+        android:id="@+id/txtViewViewers"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/txtViewViewers"
+        android:layout_alignBottom="@+id/chkBoxOnline"
+        android:layout_alignRight="@+id/txtViewTitle"
         android:layout_below="@+id/txtViewTitle"
         android:layout_toEndOf="@+id/chkBoxOnline"
         android:layout_toRightOf="@+id/chkBoxOnline"
-        android:layout_alignBottom="@+id/chkBoxOnline"
-        android:layout_alignRight="@+id/txtViewTitle"
         android:background="#ffd2cfd3"
-        android:paddingTop="7dp"
-        android:paddingLeft="15dp" />
+        android:paddingLeft="15dp"
+        android:paddingTop="7dp" />
+
+    <TextView
+        android:id="@+id/txtViewGame"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/chkBoxOnline"
+        android:layout_toEndOf="@+id/txtViewTitleActitvity"
+        android:background="#ffd2cfd3"
+        android:paddingBottom="2dp"
+        android:paddingLeft="5dp" />
 
 </RelativeLayout>
